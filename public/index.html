@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stripe Connect Payouts Demo</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 20px; line-height: 1.5; }
-    h1 { font-size: 1.4rem; }
-    .step { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin: 14px 0; }
-    .step h2 { font-size: 1rem; margin: 0 0 8px; }
+    /* Force a light theme so the page is readable regardless of the
+       viewer's OS/browser dark-mode setting. */
+    :root { color-scheme: light; }
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 20px; line-height: 1.5; background: #ffffff; color: #1a1a2e; }
+    h1 { font-size: 1.4rem; color: #0a0a23; }
+    .step { border: 1px solid #d5d9e0; border-radius: 8px; padding: 16px; margin: 14px 0; background: #fbfbfd; }
+    .step h2 { font-size: 1rem; margin: 0 0 8px; color: #0a0a23; }
     button { background: #635bff; color: #fff; border: 0; border-radius: 6px; padding: 9px 14px; cursor: pointer; font-size: 0.9rem; }
+    button:hover:not(:disabled) { background: #524dd6; }
     button:disabled { opacity: 0.5; cursor: default; }
-    code { background: #f2f2f2; padding: 1px 5px; border-radius: 4px; font-size: 0.85rem; }
-    #log { background: #111; color: #0f0; font-family: monospace; font-size: 0.8rem; padding: 12px; border-radius: 6px; min-height: 60px; white-space: pre-wrap; }
-    .muted { color: #666; font-size: 0.85rem; }
+    code { background: #eef0f4; color: #1a1a2e; padding: 1px 5px; border-radius: 4px; font-size: 0.85rem; }
+    #log { background: #0a0a23; color: #4ade80; font-family: monospace; font-size: 0.8rem; padding: 12px; border-radius: 6px; min-height: 60px; white-space: pre-wrap; }
+    .muted { color: #555; font-size: 0.85rem; }
   </style>
 </head>
 <body>
