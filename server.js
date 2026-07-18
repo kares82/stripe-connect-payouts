@@ -151,9 +151,9 @@ app.post("/create-checkout-session", async (req, res) => {
       line_items: [
         {
           price_data: {
-            currency: "usd",
+            currency: "eur",
             product_data: { name: "Demo payment (funds platform balance)" },
-            unit_amount: 5000, // $50.00
+            unit_amount: 5000, // €50.00
           },
           quantity: 1,
         },
@@ -177,8 +177,8 @@ app.post("/payout", async (req, res) => {
   try {
     const { accountId, amount } = req.body;
     const transfer = await stripe.transfers.create({
-      amount: amount || 2000, // default $20.00
-      currency: "usd",
+      amount: amount || 2000, // default €20.00
+      currency: "eur",
       destination: accountId,
       description: "Demo payout to connected user",
     });

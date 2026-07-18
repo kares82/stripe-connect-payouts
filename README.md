@@ -42,6 +42,26 @@ The CLI prints a signing secret (`whsec_...`). Put it in `.env` as
 `STRIPE_WEBHOOK_SECRET`. Events will now be verified against it; a bad
 signature returns HTTP 400 and the event is rejected.
 
+## Testing notes (test mode)
+
+A few things make the end-to-end test flow reliable:
+
+- **Platform country matters.** The platform account must be in a country where
+  Connect supports the platform-controlled payout model (Express accounts +
+  `transfers.create`). Most regions work; some (e.g. Malaysia) restrict it. The
+  account currency should match the currency used in the code (this demo uses
+  `eur`; change the three `currency` references if your account settles in
+  another currency).
+- **Passing identity verification in onboarding.** In the hosted onboarding
+  form, set the home address line 1 to the magic value `address_full_match`.
+  Stripe's test mode treats this as a verified address, which flips the account
+  to `payouts_enabled: true`.
+- **Funding the balance so a transfer can go out.** A normal test card
+  (`4242 4242 4242 4242`) lands funds in the **pending** balance, so an
+  immediate transfer fails with insufficient available funds. Pay with
+  `4000 0000 0000 0077` instead — that test card adds funds directly to the
+  **available** balance, so the payout succeeds right away.
+
 ## Notes
 
 - Test mode only. No live keys, no real money.
